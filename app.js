@@ -96,9 +96,14 @@ app.post("/users", async (req, res) => {
     const user = new User({
         name: req.body.name,
         phoneNumber: req.body.phoneNumber,
+        phoneNumber2: req.body.phoneNumber2,
         address: req.body.address,
+        zipcode: req.body.zipcode,
         activationKey: generateRandomKey(5),
         validTill: req.body.validTill,
+        registerDate: new Date(),
+        validFrom: req.body.validFrom,
+        cards: req.body.cards,
     });
 
     const userSaved = await user.save();
@@ -116,8 +121,12 @@ app.put("/users", async (req, res) => {
         {
             name: req.body.name,
             phoneNumber: req.body.phoneNumber,
+            phoneNumber2: req.body.phoneNumber2,
             address: req.body.address,
+            zipcode: req.body.zipcode,
             validTill: req.body.validTill,
+            validFrom: req.body.validFrom,
+            cards: req.body.cards,
         },
         { new: true }
     );

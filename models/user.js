@@ -1,11 +1,34 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-    name: String,
-    phoneNumber: String,
+    name: {
+        type: String,
+        required: true,
+    },
+    phoneNumber: {
+        type: String,
+        required: true,
+    },
+    phoneNumber2: String,
     address: String,
-    activationKey: String,
-    validTill: String,
+    zipcode: Number,
+    activationKey: {
+        type: String,
+        required: true,
+    },
+    validTill: {
+        type: Date,
+        required: true,
+    },
+    registerDate: {
+        type: Date,
+        required: true,
+    },
+    validFrom: {
+        type: Date,
+        required: true,
+    },
+    cards: Object,
 });
 
 exports.User = mongoose.model("User", userSchema);
